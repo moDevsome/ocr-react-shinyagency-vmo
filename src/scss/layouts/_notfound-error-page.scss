@@ -1,0 +1,12 @@
+div#notfound-error-page {
+
+    font-size: 36px;
+
+    & > b > i {
+
+        font-style: normal;
+        text-decoration: line-through;
+
+    }
+
+}

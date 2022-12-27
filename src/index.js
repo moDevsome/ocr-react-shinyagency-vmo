@@ -1,24 +1,20 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App'; // ==> importe le point d'entrée
-import reportWebVitals from './reportWebVitals';
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
-
 /**
- * Je désactive le StrictMode car cela provoque un comportement très genant pour le développement (des render fait en double par exemple...)
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
-*/
-root.render( <App /> );
+ * Point d'entrée du framework et des fichiers compilés par Webpack
+ */
+import React from "react"; // ==> on importe le framework React
+import ReactDOM from "react-dom/client"; // ==> on importe react-dom pour permettre la modification des élements du DOM
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-//
-// Je désactive par défaut
-// reportWebVitals();
+// ==> on importe BrowserRouter pour le router
+// @see https://blog.webdevsimplified.com/2022-07/react-router/
+import { BrowserRouter } from "react-router-dom";
+
+import App from "./App"; // ==> on importe le point d'entrée de notre application
+
+import "./index.css";
+
+// On instancie notre application, elle sera "wrapper" dans le router
+ReactDOM.createRoot( document.getElementById('root') ).render(
+    <BrowserRouter>
+        <App/>
+    </BrowserRouter>
+);
