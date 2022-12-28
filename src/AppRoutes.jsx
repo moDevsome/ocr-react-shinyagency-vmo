@@ -7,12 +7,16 @@ import { Route, Routes } from 'react-router-dom'; // ==> importe les composants 
 import HomePage from './pages/HomePage';
 import { SurveyPage, SurveyPageQuestion } from './pages/SurveyPage';
 import NotfoundErrorPage from './pages/NotfoundErrorPage';
+import FreelancesPage from './pages/FreelancesPage';
+import ResultsPage from './pages/ResultsPage';
 
 function AppRoutes() {
 
     return(
         <Routes>
             <Route path="/" element={ <HomePage/> }/>
+            <Route path="/freelances" element={ <FreelancesPage/> }/>
+            <Route path="/results" element={ <ResultsPage/> }/>
             <Route path="/survey" element={ <SurveyPage/> }/>
             <Route path="/survey/:number" element={ <SurveyPageQuestion/> }/>
             <Route path="*" element={ <NotfoundErrorPage/> }/>
