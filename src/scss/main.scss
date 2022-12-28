@@ -1,6 +1,8 @@
 // Importe les élements de base
 @import "./base/base";
+@import "./variables/variables";
 
 // Importe les layouts
 @import "./layouts/header";
 @import "./layouts/notfound-error-page";
+@import "./layouts/home-page";
