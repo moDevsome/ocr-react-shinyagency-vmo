@@ -10,7 +10,7 @@ import { BrowserRouter } from "react-router-dom";
 
 import App from "./App"; // ==> on importe le point d'entrée de notre application
 
-import "./index.css";
+import "./styles/index.css";
 
 // On instancie notre application, elle sera "wrapper" dans le router
 ReactDOM.createRoot( document.getElementById('root') ).render(
