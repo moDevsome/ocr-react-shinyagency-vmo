@@ -1,0 +1,92 @@
+// https://codepen.io/nobuakihonma/pen/dYbqLQ
+
+div.loader-container {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+    z-index: 5;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+	background-color: rgba(0, 0, 0, 0.6);
+
+    & > .loader {
+        height: $loaderElementsHeight;
+        width: $loaderElementsWidth;
+        -webkit-animation: loader-1 2s cubic-bezier(0.770, 0.000, 0.175, 1.000) infinite;
+                animation: loader-1 2s cubic-bezier(0.770, 0.000, 0.175, 1.000) infinite;
+    }
+
+    & > .loader::before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0; left: 0;
+        bottom: 0; right: auto;
+        margin: auto;
+        width: 8px;
+        height: 8px;
+        background: $colorPrimary;
+        border-radius: 50%;
+        -webkit-animation: loader-2 2s cubic-bezier(0.770, 0.000, 0.175, 1.000) infinite;
+                animation: loader-2 2s cubic-bezier(0.770, 0.000, 0.175, 1.000) infinite;
+    }
+
+    & > .loader::after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0; left: auto;
+        bottom: 0; right: 0;
+        margin: auto;
+        width: 8px;
+        height: 8px;
+        background: $colorPrimary;
+        border-radius: 50%;
+        -webkit-animation: loader-3 2s cubic-bezier(0.770, 0.000, 0.175, 1.000) infinite;
+                animation: loader-3 2s cubic-bezier(0.770, 0.000, 0.175, 1.000) infinite;
+    }
+
+    & > .loader span {
+        display: block;
+        position: absolute;
+        top: 0; left: 0;
+        bottom: 0; right: 0;
+        margin: auto;
+        height: $loaderElementsHeight;
+        width: $loaderElementsWidth;
+    }
+    & > .loader span::before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0; left: 0;
+        bottom: auto; right: 0;
+        margin: auto;
+        width: 8px;
+        height: 8px;
+        background: $colorPrimary;
+        border-radius: 50%;
+        -webkit-animation: loader-4 2s cubic-bezier(0.770, 0.000, 0.175, 1.000) infinite;
+                animation: loader-4 2s cubic-bezier(0.770, 0.000, 0.175, 1.000) infinite;
+    }
+
+    & > .loader span::after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: auto; left: 0;
+        bottom: 0; right: 0;
+        margin: auto;
+        width: 8px;
+        height: 8px;
+        background: $colorPrimary;
+        border-radius: 50%;
+        -webkit-animation: loader-5 2s cubic-bezier(0.770, 0.000, 0.175, 1.000) infinite;
+                animation: loader-5 2s cubic-bezier(0.770, 0.000, 0.175, 1.000) infinite;
+    }
+
+}

@@ -1,9 +1,11 @@
 // Importe les élements de base
 @import "./base/base";
+@import "./utils/keyframes";
 @import "./variables/variables";
 
 // Importe les layouts
 @import "./layouts/header";
 @import "./components/card";
+@import "./layouts/loader";
 @import "./layouts/notfound-error-page";
 @import "./layouts/home-page";

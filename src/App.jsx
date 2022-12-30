@@ -4,8 +4,10 @@
 // import { Route, Routes } from 'react-router-dom'; // ==> importe les composants Route et Routes, ces composants vont être utilisés par le router
 
 // Importe les composants
+import { useState } from 'react';
 import AppRoutes from './AppRoutes';
 import HeaderComponent from './components/HeaderComponent';
+import LoaderComponent from "./components/LoaderComponent";
 
 // Importe les pages
 /*
@@ -21,12 +23,16 @@ import NotfoundErrorPage from './pages/NotfoundErrorPage';
  */
 function App() {
 
+    // On définis l'état du loader qui sera utilisés par tous les composants enfants de l'App
+    const [ loaderState, updateLoaderState ] = useState(false);
+
     return(
         <div id="app-body">
             <HeaderComponent/>
             <div id="main-area">
-                <AppRoutes/>
+                <AppRoutes loaderState={ loaderState } updateLoaderState={ updateLoaderState }/>
             </div>
+            <LoaderComponent loaderState={ loaderState }/>
         </div>
     )
 

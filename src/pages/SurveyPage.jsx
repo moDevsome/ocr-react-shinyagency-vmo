@@ -1,10 +1,10 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 // => on importe le hook useParams qui va nous permettre d'afficher des élements dynamiquement en fonction des paramètres passés dans l'URL
 import { useParams } from "react-router-dom";
 
 import NotfoundErrorPage from "./NotfoundErrorPage";
-
 
 /**
  * Page d'acceuil du questionnaire
@@ -27,7 +27,31 @@ function SurveyPage() {
  * Page de détail d'une question du questionnaire
  * Route: "/survey/:number">
  */
-function SurveyPageQuestion() {
+function SurveyPageQuestion({ updateLoaderState }) {
+
+    // On initialise l'objet contenant les questions, l'objet sera ensuite alimenté via un Api Call
+    const [questions, updateQuestions] = useState({});
+
+    // On appel l'API du cours pour récupérer les questions avec le userEffect qui va être executé au 1er render
+    // Lien du Github de l'API : https://github.com/OpenClassrooms-Student-Center/7150606-API-React-intermediaire
+    useEffect(() => {
+
+        updateLoaderState(true); // ==> Affiche le loader pendant la récupération des données via l'API
+        setTimeout(() => {
+
+            fetch('http://localhost:8000/survey')
+                .then( (response) => response.json() )
+                .then( ({ surveyData }) => {
+
+                    updateQuestions(surveyData);
+                    updateLoaderState(false); // ==> masque le loader
+
+                } )
+                .catch( (error) => console.log(error) )
+
+        }, 500);
+
+    }, [ updateLoaderState ]); // ==> on doit ajouter "updateLoaderState" en tant que dépendance sinon on a un Warning, je ne sais pas ce que cela change... mais avec ou sans ça fonctionne.
 
     // On récupère la paramètre ":number" via le hook useParams
     // ATTENTION cela retourne une "string" même si la valeur est un entier
@@ -50,6 +74,7 @@ function SurveyPageQuestion() {
 
         <div className="page-wrapper" id="survey">
             <p>Vous êtes bien sur la page de la question { number }</p>
+            <p><u>Question</u> : { questions[ number ] }</p>
             <nav className="survey-pagination">
                 { prevLink }
                 { nextLink }

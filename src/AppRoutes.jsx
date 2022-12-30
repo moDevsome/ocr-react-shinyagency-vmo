@@ -10,7 +10,7 @@ import NotfoundErrorPage from './pages/NotfoundErrorPage';
 import FreelancesPage from './pages/FreelancesPage';
 import ResultsPage from './pages/ResultsPage';
 
-function AppRoutes() {
+function AppRoutes({ loaderState, updateLoaderState }) {
 
     return(
         <Routes>
@@ -18,7 +18,7 @@ function AppRoutes() {
             <Route path="/freelances" element={ <FreelancesPage/> }/>
             <Route path="/results" element={ <ResultsPage/> }/>
             <Route path="/survey" element={ <SurveyPage/> }/>
-            <Route path="/survey/:number" element={ <SurveyPageQuestion/> }/>
+            <Route path="/survey/:number" element={ <SurveyPageQuestion loaderState={ loaderState } updateLoaderState={ updateLoaderState }/> }/>
             <Route path="*" element={ <NotfoundErrorPage/> }/>
         </Routes>
     );
