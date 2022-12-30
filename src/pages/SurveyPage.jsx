@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 // => on importe le hook useParams qui va nous permettre d'afficher des élements dynamiquement en fonction des paramètres passés dans l'URL
 import { useParams } from "react-router-dom";
 
-import NotfoundErrorPage from "./NotfoundErrorPage";
+import ErrorPage from "./ErrorPage";
 
 /**
  * Page d'acceuil du questionnaire
@@ -36,7 +36,7 @@ function SurveyPageQuestion({ updateLoaderState }) {
     // Lien du Github de l'API : https://github.com/OpenClassrooms-Student-Center/7150606-API-React-intermediaire
     useEffect(() => {
 
-        updateLoaderState(true); // ==> Affiche le loader pendant la récupération des données via l'API
+        updateLoaderState(true); // ==> Affiche le loader pendant la récupération des données via l'API, cette instruction doit être faite dans le useEffect
         setTimeout(() => {
 
             fetch('http://localhost:8000/survey')
@@ -62,7 +62,7 @@ function SurveyPageQuestion({ updateLoaderState }) {
 
         // On "déclenche" une erreur 404
         return(
-            <NotfoundErrorPage message="Cette question n'existe pas"/>
+            <ErrorPage code={ 404 } message="Cette question n'existe pas"/>
         )
 
     }

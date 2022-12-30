@@ -6,7 +6,7 @@ import { Route, Routes } from 'react-router-dom'; // ==> importe les composants 
 // Importe les pages
 import HomePage from './pages/HomePage';
 import { SurveyPage, SurveyPageQuestion } from './pages/SurveyPage';
-import NotfoundErrorPage from './pages/NotfoundErrorPage';
+import ErrorPage from './pages/ErrorPage';
 import FreelancesPage from './pages/FreelancesPage';
 import ResultsPage from './pages/ResultsPage';
 
@@ -15,11 +15,11 @@ function AppRoutes({ loaderState, updateLoaderState }) {
     return(
         <Routes>
             <Route path="/" element={ <HomePage/> }/>
-            <Route path="/freelances" element={ <FreelancesPage/> }/>
+            <Route path="/freelances" element={ <FreelancesPage updateLoaderState={ updateLoaderState }/> }/>
             <Route path="/results" element={ <ResultsPage/> }/>
             <Route path="/survey" element={ <SurveyPage/> }/>
             <Route path="/survey/:number" element={ <SurveyPageQuestion loaderState={ loaderState } updateLoaderState={ updateLoaderState }/> }/>
-            <Route path="*" element={ <NotfoundErrorPage/> }/>
+            <Route path="*" element={ <ErrorPage code={ 404 }/> }/>
         </Routes>
     );
 
